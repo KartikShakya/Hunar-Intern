@@ -1,0 +1,46 @@
+#Rock Paper Scissor Game
+import random
+user_score=0
+computer_score=0
+tie_score=0
+def game():
+    while True:
+        global user_score, computer_score, tie_score
+        user_choice=input("Choose a option (rock, paper, scissor) : ").lower()
+        while user_choice not in ("rock", "paper", "scissor"):
+            user_choice=input("Invalid input, try again : ").lower()
+            
+        choices=["rock", "paper", "scissor"]
+        computer_choice=random.choice(choices)
+        
+        if user_choice == computer_choice:
+            print(f"Both chose {computer_choice}, Its a tie.")
+            tie_score+=1
+        elif user_choice == "rock":
+            if computer_choice == "paper":
+                print(f"you chose {user_choice} and computer chose {computer_choice}, paper covers rock, computer win")
+                computer_score+=1
+            else:
+                print(f"you chose {user_choice} and computer chose {computer_choice}, rock smashes scissor, you win")
+                user_score+=1
+        elif user_choice == "paper":
+            if computer_choice == "rock":
+                print(f"you chose {user_choice} and computer chose {computer_choice}, paper covers rock, you win")
+                user_score+=1
+            else:
+                print(f"you chose {user_choice} and computer chose {computer_choice}, rock smashes scissor, computer win")
+                computer_score+=1
+        elif user_choice == "scissor":
+            if computer_choice == "rock":
+                print(f"you chose {user_choice} and computer chose {computer_choice}, rock smashes scissor, computer win")
+                computer_score+=1
+            else:
+                print(f"you chose {user_choice} and computer chose {computer_choice}, scissor cuts paper, you win")
+                user_score+=1
+        print(f"Score are You won : {user_score}, Computer won {computer_score}, Match Tied : {tie_score}")
+        play_again=input("choose one of them (yes/no) : " ).lower()
+        while play_again not in ("yes", "no"):
+            play_again=input("Invalid input, try again")
+        if play_again != "yes":
+            print("GAME OVER")
+print(game())
