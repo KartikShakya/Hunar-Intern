@@ -1,0 +1,135 @@
+#Hunar Intern Final Project
+from tkinter import *
+from tkinter import messagebox
+import tkinter.font as tf
+
+root=Tk()
+root.title("Quiz Game")
+icon=PhotoImage(file="quiz.ico")
+root.iconphoto(True,icon)
+root.geometry("700x400")
+root.config(bg="cyan")
+font_start=tf.Font(family="arial", size=20, slant="italic",weight="bold")
+font_question=tf.Font(family="arial", size=15, slant="italic",weight="bold",underline=3)
+font_option=tf.Font(family="arial", size=12, slant="italic",weight="bold")
+score=0
+
+def start():
+    Button(root,text="START",font=font_start, width=20,height=2,bg="green",command=q1).pack(pady=(20))
+    Button(root,text="INFO",font=font_start, width=20,height=2,bg="yellow",command=info).pack(pady=(20))
+    Button(root,text="QUIT",font=font_start, width=20,height=2,bg="Red",command=root.quit).pack(pady=(20))
+
+def q1():
+    for widget in root.winfo_children():
+        widget.pack_forget()
+    Label(root, text="What is the chemical symbol for helium?", font=font_question, bg="green").pack(pady=20)
+    Button(root,text="A) H",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q2())).pack(pady=10)
+    Button(root,text="B) He",font=font_option,bg="yellow", width=20,command=lambda:(right(),q2())).pack(pady=10)
+    Button(root,text="C) Hg",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q2())).pack(pady=10)
+    Button(root,text="D) Ho",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q2())).pack(pady=10)
+    Message(root,text=(f"Your score : {score}")).pack(pady=10)
+    
+def q2():
+    for widget in root.winfo_children():
+        widget.pack_forget()
+    Label(root, text="Which planet in our solar system is known for being the largest?", font=font_question, bg="green").pack(pady=20)
+    Button(root,text="A) Earth",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q3())).pack(pady=10)
+    Button(root,text="B) Saturn",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q3())).pack(pady=10)
+    Button(root,text="C) Jupiter",font=font_option,bg="yellow", width=20,command=lambda:(right(),q3())).pack(pady=10)
+    Button(root,text="D) Uranus",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q3())).pack(pady=10)
+    Message(root,text=(f"Your score : {score}")).pack(pady=10)
+def q3():
+    for widget in root.winfo_children():
+        widget.pack_forget()
+    Label(root, text="Who painted the famous painting of Mona Lisa??", font=font_question, bg="green").pack(pady=20)
+    Button(root,text="A) Leonardo da Vinci",font=font_option,bg="yellow", width=20,command=lambda:(right(),q4())).pack(pady=10)
+    Button(root,text="B) Vincent van Gogh",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q4())).pack(pady=10)
+    Button(root,text="C) Pablo Picasso",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q4())).pack(pady=10)
+    Button(root,text="D) Claude Monet",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q4())).pack(pady=10)
+    Message(root,text=(f"Your score : {score}")).pack(pady=10)
+def q4():
+    for widget in root.winfo_children():
+        widget.pack_forget()
+    Label(root, text="Who is the fastest animal in the world?", font=font_question, bg="green").pack(pady=20)
+    Button(root,text="A) Lion",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q5())).pack(pady=10)
+    Button(root,text="B) Tiger",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q5())).pack(pady=10)
+    Button(root,text="C) Leopard",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q5())).pack(pady=10)
+    Button(root,text="D) Cheetah",font=font_option,bg="yellow", width=20,command=lambda:(right(),q5())).pack(pady=10)
+    Message(root,text=(f"Your score : {score}")).pack(pady=10)
+def q5():
+    for widget in root.winfo_children():
+        widget.pack_forget()
+    Label(root, text="What is the capital city of Australia?", font=font_question, bg="green").pack(pady=20)
+    Button(root,text="A) Sydney",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q6())).pack(pady=10)
+    Button(root,text="B) Melbourne",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q6())).pack(pady=10)
+    Button(root,text="C) Canberra",font=font_option,bg="yellow", width=20,command=lambda:(right(),q6())).pack(pady=10)
+    Button(root,text="D) Perth",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q6())).pack(pady=10)
+    Message(root,text=(f"Your score : {score}")).pack(pady=10)
+def q6():
+    for widget in root.winfo_children():
+        widget.pack_forget()
+    Label(root, text="What is the largest mammal on Earth??", font=font_question, bg="green").pack(pady=20)
+    Button(root,text="A) Elephant",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q7())).pack(pady=10)
+    Button(root,text="B) Blue Whale",font=font_option,bg="yellow", width=20,command=lambda:(right(),q7())).pack(pady=10)
+    Button(root,text="C) Rhino",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q7())).pack(pady=10)
+    Button(root,text="D) Hippo",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q7())).pack(pady=10)
+    Message(root,text=(f"Your score : {score}")).pack(pady=10)
+def q7():
+    for widget in root.winfo_children():
+        widget.pack_forget()
+    Label(root, text="Who was the first President of the United States??", font=font_question, bg="green").pack(pady=20)
+    Button(root,text="A) George Washington",font=font_option,bg="yellow", width=20,command=lambda:(right(),q8())).pack(pady=10)
+    Button(root,text="B) Thomas Jefferson",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q8())).pack(pady=10)
+    Button(root,text="C) Abraham Lincoln",font=font_option,bg="yellow", width=20,command=lambda:(wrong().q8())).pack(pady=10)
+    Button(root,text="D) Franklin D. Roosevelt",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q8())).pack(pady=10)
+    Message(root,text=(f"Your score : {score}")).pack(pady=10)
+def q8():
+    for widget in root.winfo_children():
+        widget.pack_forget()
+    Label(root, text="What is the smallest country in the world?", font=font_question, bg="green").pack(pady=20)
+    Button(root,text="A) Vatican City",font=font_option,bg="yellow", width=20,command=lambda:(right(),q9())).pack(pady=10)
+    Button(root,text="B) Monaco",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q9())).pack(pady=10)
+    Button(root,text="C) Nauru",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q9())).pack(pady=10)
+    Button(root,text="D) Goa",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q9())).pack(pady=10)
+    Message(root,text=(f"Your score : {score}")).pack(pady=10)
+def q9():
+    for widget in root.winfo_children():
+        widget.pack_forget()
+    Label(root, text="Who was the author of the famous play \"Romeo and Juliet\"?", font=font_question, bg="green").pack(pady=20)
+    Button(root,text="A) William Shakespeare",font=font_option,bg="yellow", width=20,command=lambda:(right(),q10())).pack(pady=10)
+    Button(root,text="B) Christopher Marlowe",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q10())).pack(pady=10)
+    Button(root,text="C) John Milton",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q10())).pack(pady=10)
+    Button(root,text="D) Jane Austen",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),q10())).pack(pady=10)
+    Message(root,text=(f"Your score : {score}")).pack(pady=10)
+def q10():
+    for widget in root.winfo_children():
+        widget.pack_forget()
+    Label(root, text="What is the highest mountain peak in the world?", font=font_question, bg="green").pack(pady=20)
+    Button(root,text="A) Mount Everest",font=font_option,bg="yellow", width=20,command=lambda:(right(),last())).pack(pady=10)
+    Button(root,text="B) Mount Kilimanjaro",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),last())).pack(pady=10)
+    Button(root,text="C) K2",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),last())).pack(pady=10)
+    Button(root,text="D) Mount Elbrus",font=font_option,bg="yellow", width=20,command=lambda:(wrong(),last())).pack(pady=10)
+    Message(root,text=(f"Your score : {score}")).pack(pady=10)
+    
+def right():
+    global score
+    messagebox.showinfo("Answer","Correct")
+    score+=1
+def wrong():
+    messagebox.showinfo("Answer","Incorrect")
+def info():
+    for widget in root.winfo_children():
+        widget.pack_forget()
+    Label(root,text="Welcome to Quiz App, the ultimate quiz game app that puts your \nknowledge to the test! With a vast collection of \nquestions, exciting game modes, and rewarding prizes, we're sure \nyou'll have a blast playing our game. New to the game?\n Simply choose start game, answer questions to the best of your ability, earn \nrewards, and get your result to become the ultimate quiz champion!\n If you need help or have feedback, \nfeel free to contact us at kartikshakya1991@gmial.com \nor follow us on social media. \nThanks for reading, Good Luck.",font=font_option, bg="yellow").pack(pady=20)
+    Button(root, text="Back", command=restart).pack(pady=10)
+def restart():
+    for widget in root.winfo_children():
+        widget.pack_forget()
+    start()
+def last():
+    for widget in root.winfo_children():
+        widget.pack_forget()
+    messagebox.showinfo("Result","You have successfully completed the game.")
+    restart()
+start()
+root.mainloop()
